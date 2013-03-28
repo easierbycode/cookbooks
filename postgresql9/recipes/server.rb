@@ -4,6 +4,7 @@ local_unpacked = "/tmp/postgresql-#{node[:postgresql9][:version]}"
 local_package = "/tmp/postgresql-#{node[:postgresql9][:version]}.tar.bz2"
 
 package "libreadline-dev"
+package "libpq-dev"  # DRJ
 
 postgresql_version_installed = File.exists?("#{node[:postgresql9][:prefix]}/bin/pg_ctl") ? `#{node[:postgresql9][:prefix]}/bin/pg_ctl --version | awk '{print $3}'`.strip : nil
 
