@@ -6,7 +6,7 @@ service "postgresql" do
 end
 
 execute "reload pg_hba" do
-  command "pg_ctl reload -D #{node[:postgresql9][:datadir]}"
+  command "#{node[:postgresql9][:prefix]}/bin/pg_ctl reload -D #{node[:postgresql9][:datadir]}"
   action :nothing
 end
 
