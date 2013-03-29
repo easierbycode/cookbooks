@@ -7,6 +7,7 @@ end
 
 execute "reload pg_hba" do
   command "#{node[:postgresql9][:prefix]}/bin/pg_ctl reload -D #{node[:postgresql9][:datadir]}"
+  user node[:postgresql9][:user]
   action :nothing
 end
 
