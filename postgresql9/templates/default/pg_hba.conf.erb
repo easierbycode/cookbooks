@@ -8,15 +8,15 @@ host    all             all             ::1/128                 trust
 <% app_servers.each do |server| -%>
 host    all             all             <%= node[:opsworks][:layers]['rails-app'][:instances][server][:private_ip] %>/32  trust
 <% end -%>
-<% app_servers = node[:opsworks][:layers]['php-app'][:instances].keys %>
+<% app_servers = (node[:opsworks][:layers]['php-app'][:instances].keys rescue []) %>
 <% app_servers.each do |server| -%>
 host    all             all             <%= node[:opsworks][:layers]['php-app'][:instances][server][:private_ip] %>/32  trust
 <% end -%>
-<% app_servers = node[:opsworks][:layers]['web'][:instances].keys %>
+<% app_servers = (node[:opsworks][:layers]['web'][:instances].keys rescue []) %>
 <% app_servers.each do |server| -%>
 host    all             all             <%= node[:opsworks][:layers]['web'][:instances][server][:private_ip] %>/32  trust
 <% end -%>
-<% app_servers = node[:opsworks][:layers]['nodejs-app'][:instances].keys %>
+<% app_servers = (node[:opsworks][:layers]['nodejs-app'][:instances].keys rescue []) %>
 <% app_servers.each do |server| -%>
 host    all             all             <%= node[:opsworks][:layers]['nodejs-app'][:instances][server][:private_ip] %>/32  trust
 <% end -%>
